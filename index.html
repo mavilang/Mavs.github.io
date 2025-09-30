@@ -1,52 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html>
 <head>
-  <title>System Update</title>
+  <title>Do Not Click</title>
   <style>
     body {
-      background-color: #111;
-      color: #0f0;
-      font-family: monospace;
+      font-family: sans-serif;
       text-align: center;
       padding-top: 100px;
+      transition: all 0.5s ease;
     }
-    .loader {
+    #prankBtn {
+      padding: 20px 40px;
       font-size: 24px;
-      animation: blink 1s infinite;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
     }
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.3; }
-      100% { opacity: 1; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .crazy {
+      transform: rotate(180deg);
+      background-color: black;
+      color: lime;
+      font-size: 2em;
     }
   </style>
 </head>
 <body>
-  <h1>🔄 Installing Critical System Update...</h1>
-  <div class="loader">Loading ██████████ 99%</div>
-  <p>Please do not turn off your phone.</p>
+  <h1>🚫 Whatever You Do... Don't Click the Button!</h1>
+  <button id="prankBtn">Do Not Click</button>
 
   <script>
-    let dots = 0;
-    setInterval(() => {
-      dots = (dots + 1) % 4;
-      document.querySelector('.loader').textContent = "Loading ██████████ 99%" + ".".repeat(dots);
-    }, 1000);
+    document.getElementById("prankBtn").onclick = function() {
+      document.body.classList.add("crazy");
+      alert("😱 You clicked it! Now everything is upside down!");
+      setInterval(() => {
+        document.body.style.backgroundColor = 
+          "#" + Math.floor(Math.random()*16777215).toString(16);
+      }, 500);
+    };
   </script>
 </body>
-</html>
-    
-  </body>
-  
 </html>
